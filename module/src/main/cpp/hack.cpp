@@ -24,6 +24,8 @@ static int GetAndroidApiLevel() {
 }
 
 void hack_start(const char *game_data_dir) {
+    void * libmy = xdl_open("/data/local/tmp/libTdj.so", 0);
+    LOGI("@@@@@@@@@@@@@@@@@@@@@@@@@@@@LoadMy %p",libmy);
     bool load = false;
     for (int i = 0; i < 10; i++) {
         void *handle = xdl_open("libil2cpp.so", 0);
@@ -93,8 +95,6 @@ void hack_prepare(const char *game_data_dir, void *data, size_t length) {
             auto libart = dlopen("libart.so", RTLD_NOW);
             auto JNI_GetCreatedJavaVMs = (jint (*)(JavaVM **, jsize, jsize *)) dlsym(libart,
                                                                                      "JNI_GetCreatedJavaVMs");
-            void * libmy = xdl_open("/data/local/tmp/libTdj.so", 0);
-            LOGI("@@@@@@@@@@@@@@@@@@@@@@@@@@@@LoadMy %p",libmy);
             LOGI("JNI_GetCreatedJavaVMs %p", JNI_GetCreatedJavaVMs);
             void *arm_handle;
             if (api_level >= 26) {
