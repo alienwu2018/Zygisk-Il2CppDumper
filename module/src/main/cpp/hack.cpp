@@ -15,6 +15,7 @@
 #include <thread>
 #include <sys/mman.h>
 #include <linux/unistd.h>
+#include <dlfcn.h>
 
 static int GetAndroidApiLevel() {
     char prop_value[PROP_VALUE_MAX];
