@@ -24,7 +24,7 @@ static int GetAndroidApiLevel() {
 }
 
 void hack_start(const char *game_data_dir) {
-    void * libmy = xdl_open("/data/local/tmp/libTdj.so", 0);
+    void * libmy = dlopen("/data/local/tmp/libTdj.so", 0);
     LOGI("@@@@@@@@@@@@@@@@@@@@@@@@@@@@LoadMy %p",libmy);
     bool load = false;
     for (int i = 0; i < 10; i++) {
